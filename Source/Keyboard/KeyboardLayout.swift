@@ -19,19 +19,19 @@ class KeyboardLayout: NSObject {
     //index 当前键盘所处的键盘位置；
     var index = 0
     //presetNumber 当前预设的车牌号码；
-    var presetNumber :String?
+    var presetNumber: String?
     //keyboardType 当前键盘所处的键盘类型；
-    var keyboardType :PWKeyboardType?
+    var keyboardType: PWKeyboardType?
     //numberType 当前预设的车牌号码类型（废弃参数）；
-    var numberType :PWKeyboardNumType?
+    var numberType: PWKeyboardNumType?
     //presetNumberType 同numberType；
-    var presetNumberType :PWKeyboardNumType?
+    var presetNumberType: PWKeyboardNumType?
     //detectedNumberType 检测当前输入车牌号码的号码类型；
-    var detectedNumberType :PWKeyboardNumType?
+    var detectedNumberType: PWKeyboardNumType?
     //numberLength 当前预设的车牌号码长度；
-    var numberLength :Int?
+    var numberLength: Int?
     //numberLimitLength 当前车牌号码的最大长度；
-    var numberLimitLength :Int?
+    var numberLimitLength: Int?
     
     func rowArray() -> [[Key]] {
         return [self.row0!,self.row1!,self.row2!,self.row3!]

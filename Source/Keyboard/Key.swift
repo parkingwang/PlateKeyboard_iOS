@@ -21,8 +21,8 @@ enum PWKeyboardButtonType: Int {
 }
 
 class Key: NSObject {
-    var text :String?
-    var keyCode :Int?
+    var text: String?
+    var keyCode: Int?
     var enabled = false
     var isFunKey = false
 }

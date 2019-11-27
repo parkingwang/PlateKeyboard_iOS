@@ -51,7 +51,7 @@ class PWKeyBoardCollectionViewCell: UICollectionViewCell {
         submitBackgroundView.isHidden = true
     }
     
-    func setDeleteButton(left:CGFloat) {
+    func setDeleteButton(left: CGFloat) {
         imageViewLeftConstraint.constant = left
         centerLabel.text = ""
         iconImageView.isHidden = false
@@ -60,11 +60,11 @@ class PWKeyBoardCollectionViewCell: UICollectionViewCell {
         iconImageView.image =  UIImage(contentsOfFile: (pwBundle?.path(forResource: "delete@2x", ofType: "png", inDirectory: "Image"))!)?.resizableImage(withCapInsets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
     }
     
-    func setMoreButton(left:CGFloat) {
+    func setMoreButton(left: CGFloat) {
         imageViewLeftConstraint.constant = left
     }
     
-    func setSubmitBUtton(isEnabled:Bool) {
+    func setSubmitBUtton(isEnabled: Bool) {
         submitBackgroundView.isHidden = false
         submitBackgroundView.backgroundColor = isEnabled ? mainColor : UIColor(red: 153/255.0, green: 153/255.0, blue: 153/255.0, alpha: 1)
         centerLabel.textColor = UIColor.white

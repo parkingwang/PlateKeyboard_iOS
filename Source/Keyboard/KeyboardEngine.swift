@@ -116,7 +116,7 @@ class KeyboardEngine: NSObject {
     }
     
     //键位注册
-    static func keyRegist(keyString: String, inputIndex: Int, listModel: KeyboardLayout, numberType: PWKeyboardNumType) -> KeyboardLayout {
+    static func keyRegist(keyString: String, inputIndex: Int, listModel: KeyboardLayout, numberType :PWKeyboardNumType) -> KeyboardLayout {
         var list = listModel
         var okString = ""
         if numberType == .newEnergy || numberType == .wuJing {
@@ -140,9 +140,9 @@ class KeyboardEngine: NSObject {
                 let stringArray = _STR_NUM1_3.map({ (a) -> String in
                     return String(a)
                 })
-                list = KeyboardEngine.disEnabledKey(keyString:[_CHAR_DEL, okString] + stringArray, listModel: list, reverseModel:true)
+                list = KeyboardEngine.disEnabledKey(keyString:[_CHAR_DEL,okString] + stringArray, listModel: list, reverseModel:true)
             } else if numberType == .airport {
-                list = KeyboardEngine.disEnabledKey(keyString:[_CHAR_HANG, _CHAR_DEL, okString], listModel: list, reverseModel:true)
+                list = KeyboardEngine.disEnabledKey(keyString:[_CHAR_HANG,_CHAR_DEL,okString], listModel: list, reverseModel:true)
             } else {
                 list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _STR_NUM4_0 + _CHAR_I + disOkString), listModel: list, reverseModel:false)
             }
@@ -152,7 +152,7 @@ class KeyboardEngine: NSObject {
 //                list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _STR_NUM + _CHAR_DEL + _STR_DF + okString), listModel: list, reverseModel:true)
 //            } else
                 if numberType == .wuJing {
-                list = KeyboardEngine.disEnabledKey(keyString:[disOkString, _STR_MORE, _CHAR_TAI], listModel: list, reverseModel:false)
+                list = KeyboardEngine.disEnabledKey(keyString:[disOkString,_STR_MORE,_CHAR_TAI], listModel: list, reverseModel:false)
             } else if numberType == .embassy{
                 list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _STR_NUM + _CHAR_DEL + okString), listModel: list, reverseModel:true)
             } else {
@@ -166,16 +166,16 @@ class KeyboardEngine: NSObject {
                 list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _CHAR_I + _CHAR_O + disOkString), listModel: list, reverseModel:false)
             }
             
-        case 4, 5:
+        case 4,5:
             list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _CHAR_I + _CHAR_O + disOkString), listModel: list, reverseModel:false)
             
         case 6:
-            if KeyboardEngine.subString(str: keyString,  start: 0,  length: 2) == "粤Z" {
+            if KeyboardEngine.subString(str: keyString, start: 0, length: 2) == "粤Z" {
                 list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _CHAR_MACAO + _CHAR_HK + _CHAR_DEL + okString + _STR_MORE), listModel: list, reverseModel:true)
             } else if numberType == .embassy || numberType == .airport || numberType == .newEnergy{
                 list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _STR_MORE + disOkString), listModel: list, reverseModel:false)
             } else {
-                list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _CHAR_MACAO + _CHAR_HK + disOkString + _CHAR_HANG + _CHAR_SHI), listModel: list, reverseModel:false)
+                list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _CHAR_MACAO + _CHAR_HK +  disOkString + _CHAR_HANG + _CHAR_SHI), listModel: list, reverseModel:false)
             }
             
         case 7:
@@ -188,7 +188,7 @@ class KeyboardEngine: NSObject {
         return listModel
     }
     
-    static func getModelArrayWithString(keyString :String) -> Array<Key> {
+    static func getModelArrayWithString(keyString: String) -> Array<Key> {
         var modelArray = Array<Key>()
         for ch in keyString{
             let model = Key()
@@ -235,7 +235,7 @@ class KeyboardEngine: NSObject {
         return listModel
     }
     
-    static func disEnabledKey(keyString: [String], listModel: KeyboardLayout,reverseModel:Bool) ->KeyboardLayout {
+    static func disEnabledKey(keyString: [String], listModel: KeyboardLayout, reverseModel: Bool) ->KeyboardLayout {
         let list = listModel
         list.row0 = KeyboardEngine.disEnableKey(keyString: keyString, row: list.row0!,reverseModel:reverseModel)
         list.row1 = KeyboardEngine.disEnableKey(keyString: keyString, row: list.row1!,reverseModel:reverseModel)
@@ -243,9 +243,7 @@ class KeyboardEngine: NSObject {
         list.row3 = KeyboardEngine.disEnableKey(keyString: keyString, row: list.row3!,reverseModel:reverseModel)
         return list
     }
-    
-    
-    
+        
     static func disEnableKey(keyString: [String], row: Array<Key>, reverseModel: Bool) -> Array<Key> {
         for model in row {
             model.enabled = !reverseModel
@@ -296,7 +294,7 @@ class KeyboardEngine: NSObject {
         return PWKeyboardNumType.auto
     }
     
-    static func subString(str: String, start: Int ,length: Int) -> String {
+    static func subString(str: String, start: Int, length: Int) -> String {
         if length == 0 {
             return ""
         }

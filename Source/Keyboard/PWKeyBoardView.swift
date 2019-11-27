@@ -12,28 +12,25 @@ let PWScreenWidth = UIScreen.main.bounds.width
 let PWScreenHeight = UIScreen.main.bounds.height
 let PWScreenBounds = UIScreen.main.bounds
 let PWMainScreen = UIScreen.main
+let PWkeybordHeight: CGFloat = 226
 
-let PWkeybordHeight : CGFloat = 226
-
-let kItemSpacing : CGFloat = 1
-
-var kItemHeight : CGFloat = 51
-
+let kItemSpacing: CGFloat = 1
+var kItemHeight: CGFloat = 51
 
 protocol PWKeyBoardViewDeleagte {
-    func selectComplete(char:String,inputIndex:Int)
+    func selectComplete(char: String, inputIndex: Int)
 }
 
 
-class PWKeyBoardView: UIView,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
+class PWKeyBoardView: UIView {
     
     var collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: PWScreenWidth, height: PWkeybordHeight),collectionViewLayout: UICollectionViewLayout())
 
-    var listModel : KeyboardLayout!
+    var listModel: KeyboardLayout!
     
     var numType = PWKeyboardNumType.auto
     var inputIndex = 0;
-    var delegate :PWKeyBoardViewDeleagte?
+    var delegate: PWKeyBoardViewDeleagte?
     
     let identifier = "PWKeyBoardCollectionViewCell"
     
@@ -61,7 +58,7 @@ class PWKeyBoardView: UIView,UICollectionViewDelegate,UICollectionViewDelegateFl
         collectionView.dataSource = self
         collectionView.delaysContentTouches = false;
         collectionView.canCancelContentTouches = true;
-        listModel =  KeyboardEngine.generateLayout(keyboardType: PWKeyboardType.civilAndArmy, inputIndex: 0, presetNumber: "", numberType:numType,isMoreType:false);
+        listModel = KeyboardEngine.generateLayout(keyboardType: PWKeyboardType.civilAndArmy, inputIndex: 0, presetNumber: "", numberType:numType,isMoreType:false);
         collectionView.reloadData()
         let lineView = UIView(frame: CGRect(x: 0, y: 0, width: PWScreenWidth, height: 0.5))
         lineView.backgroundColor = UIColor(red: 204/256.0, green: 204/256.0, blue: 204/256.0, alpha: 1)
@@ -129,7 +126,10 @@ class PWKeyBoardView: UIView,UICollectionViewDelegate,UICollectionViewDelegateFl
     func hiddenPromt(){
         promptView.isHidden = true
     }
-    
+
+}
+
+extension PWKeyBoardView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listModel.rowArray()[section].count
     }
@@ -230,4 +230,5 @@ class PWKeyBoardView: UIView,UICollectionViewDelegate,UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         hiddenPromt()
     }
+
 }

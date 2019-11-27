@@ -17,13 +17,13 @@ extension UITextField :PWKeyBoardViewDeleagte{
         keyboardView.delegate = self
     }
     
-    @objc public func changePlateInputType(isNewEnergy:Bool){
+    @objc public func changePlateInputType(isNewEnergy: Bool){
         let keyboardView = self.inputView as! PWKeyBoardView
         keyboardView.numType = isNewEnergy ? .newEnergy : .auto
         refreshKeyboard(isMoreType:false)
     }
     
-    @objc public func setPlate(plate:String,type:PWKeyboardNumType){
+    @objc public func setPlate(plate: String, type: PWKeyboardNumType){
         let keyboardView = self.inputView as! PWKeyBoardView
         text = plate;
         keyboardView.numType = type
@@ -31,7 +31,7 @@ extension UITextField :PWKeyBoardViewDeleagte{
         changePlateInputType(isNewEnergy: isNewEnergy)
     }
     
-    func selectComplete(char:String,inputIndex:Int) {
+    func selectComplete(char: String, inputIndex: Int) {
         if !hasText {
             text = ""
         }
@@ -67,7 +67,7 @@ extension UITextField :PWKeyBoardViewDeleagte{
         return complete
     }
     
-    private func refreshKeyboard(isMoreType:Bool){
+    private func refreshKeyboard(isMoreType: Bool){
         //当输入框处于填满状态时，输入的下标往前移动一位数
         let keyboardView = inputView as! PWKeyBoardView
         let numType = keyboardView.numType == .newEnergy ? PWKeyboardNumType.newEnergy : KeyboardEngine.detectNumberTypeOf(presetNumber: text!)
