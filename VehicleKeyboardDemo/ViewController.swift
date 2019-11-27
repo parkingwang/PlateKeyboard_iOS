@@ -8,16 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController,PWHandlerDelegate {
-    
-    let handler = PWHandler()
-
+class ViewController: UIViewController, PWHandlerDelegate {
 
     @IBOutlet weak var plateInputVIew: UIView!
     
     @IBOutlet weak var myTextField: UITextField!
     
     @IBOutlet weak var newEnergyButton: UIButton!
+    
+    let handler = PWHandler()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //UITextField绑定车牌键盘(输入框形式)
@@ -42,7 +42,7 @@ class ViewController: UIViewController,PWHandlerDelegate {
         
         handler.setKeyBoardView(view: plateInputVIew)
         
-        print("当前键盘的输入值\(self.handler.paletNumber)")//获取当前输入的值
+        print("当前键盘的输入值\(self.handler.plateNumber)")//获取当前输入的值
         print(self.handler.isComplete() ? "输入完整" : "不完整")//获取当前键盘的完整性
         //手动弹出键盘
 //        handler.vehicleKeyBoardBecomeFirstResponder()
@@ -80,8 +80,9 @@ class ViewController: UIViewController,PWHandlerDelegate {
     func plateInputComplete(plate: String) {
         print("输入完成车牌号为:" + plate)
     }
+    
     //车牌输入发生变化时的回调
-    func palteDidChnage(plate:String,complete:Bool) {
+    func plateDidChange(plate: String, complete: Bool) {
         print("输入车牌号为:" + plate + "\n输入是否完整？:" + (complete ? "完整" : "不完整"))
     }
     //车牌键盘出现的回调

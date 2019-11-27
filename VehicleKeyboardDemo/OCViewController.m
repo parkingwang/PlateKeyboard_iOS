@@ -11,11 +11,8 @@
 
 @interface OCViewController ()<PWHandlerDelegate>
 
-
-@property (weak, nonatomic) IBOutlet UIView *plateInputView;
-
+@property (weak, nonatomic) IBOutlet UITextField *plateInputView;
 @property (weak, nonatomic) IBOutlet UITextField *myTextField;
-
 @property (weak, nonatomic) IBOutlet UIButton *mynewEnergyButton;
 
 @property (strong,nonatomic) PWHandler *handler;
@@ -43,11 +40,12 @@
 //    self.handler.textColor = [UIColor greenColor];
 //    //格子背景色
 //    self.handler.itemColor = [UIColor grayColor];
-    
-    [self.handler setKeyBoardViewWithView:self.plateInputView];
+//    [self.handler setKeyboardView:self.myTextField];
+    [self.handler setKeyBoardViewWithView:self.plateInputView showSearch:true];
+
     self.handler.delegate = self;
     
-    NSLog(@"当前键盘的输入值%@",self.handler.paletNumber);//获取当前输入的值
+    NSLog(@"当前键盘的输入值%@",self.handler.plateNumber);//获取当前输入的值
     NSLog([self.handler isComplete] ? @"输入完整" : @"不完整");//获取当前键盘的完整性
     //手动弹出键盘
 //    [self.handler vehicleKeyBoardBecomeFirstResponder];
@@ -89,7 +87,7 @@
 #pragma mark - PWHandlerDelegate
 
 //车牌输入发生变化时的回调
-- (void)palteDidChnageWithPlate:(NSString *)plate complete:(BOOL)complete{
+- (void)plateDidChangeWithPlate:(NSString *)plate complete:(BOOL)complete{
     NSLog(@"输入车牌号为:%@ \n 是否完整：%@",plate,complete ? @"完整" : @"不完整");
 }
 
@@ -104,7 +102,7 @@
 }
 
 //车牌键盘消失的回调
-- (void) plateKeyBoardHidden{
+- (void)plateKeyBoardHidden{
     NSLog(@"键盘隐藏了");
 }
 

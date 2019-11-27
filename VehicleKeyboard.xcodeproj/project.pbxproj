@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		146EC045238E879E005C2F49 /* PWBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 146EC044238E879E005C2F49 /* PWBundle.bundle */; };
 		270C77042079F16F009688AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C77032079F16F009688AF /* AppDelegate.swift */; };
 		270C77062079F16F009688AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C77052079F16F009688AF /* ViewController.swift */; };
 		270C77092079F16F009688AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 270C77072079F16F009688AF /* Main.storyboard */; };
@@ -26,7 +27,6 @@
 		4788C1AB214A17BD00FEB3FA /* PWPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4788C19E214A17BD00FEB3FA /* PWPromptView.swift */; };
 		4788C1AC214A17BD00FEB3FA /* PWKeyBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4788C19F214A17BD00FEB3FA /* PWKeyBoardCollectionViewCell.xib */; };
 		4788C1AE214A17BD00FEB3FA /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4788C1A1214A17BD00FEB3FA /* UITextField+Extension.swift */; };
-		4788C1AF214A17BD00FEB3FA /* PWBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4788C1A2214A17BD00FEB3FA /* PWBundle.bundle */; };
 		4788C1B0214A17BD00FEB3FA /* PWPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4788C1A3214A17BD00FEB3FA /* PWPromptView.xib */; };
 		47DCE152214A6AFD005E7490 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DCE151214A6AFD005E7490 /* Key.swift */; };
 		47DCE155214A6B56005E7490 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DCE154214A6B56005E7490 /* KeyboardLayout.swift */; };
@@ -50,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		146EC044238E879E005C2F49 /* PWBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PWBundle.bundle; sourceTree = "<group>"; };
 		270C77002079F16E009688AF /* VehicleKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VehicleKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		270C77032079F16F009688AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		270C77052079F16F009688AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		4788C19E214A17BD00FEB3FA /* PWPromptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWPromptView.swift; sourceTree = "<group>"; };
 		4788C19F214A17BD00FEB3FA /* PWKeyBoardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWKeyBoardCollectionViewCell.xib; sourceTree = "<group>"; };
 		4788C1A1214A17BD00FEB3FA /* UITextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
-		4788C1A2214A17BD00FEB3FA /* PWBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PWBundle.bundle; sourceTree = "<group>"; };
 		4788C1A3214A17BD00FEB3FA /* PWPromptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWPromptView.xib; sourceTree = "<group>"; };
 		47DCE151214A6AFD005E7490 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		47DCE154214A6B56005E7490 /* KeyboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayout.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		47C9DDD5214A5A68001502AE /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				4788C1A2214A17BD00FEB3FA /* PWBundle.bundle */,
+				146EC044238E879E005C2F49 /* PWBundle.bundle */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -362,13 +362,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4788C1AF214A17BD00FEB3FA /* PWBundle.bundle in Resources */,
 				4788C1A7214A17BD00FEB3FA /* PWInputCollectionViewCell.xib in Resources */,
 				270C770E2079F16F009688AF /* LaunchScreen.storyboard in Resources */,
 				4788C1B0214A17BD00FEB3FA /* PWPromptView.xib in Resources */,
 				4788C1AC214A17BD00FEB3FA /* PWKeyBoardCollectionViewCell.xib in Resources */,
 				270C770B2079F16F009688AF /* Assets.xcassets in Resources */,
 				270C77092079F16F009688AF /* Main.storyboard in Resources */,
+				146EC045238E879E005C2F49 /* PWBundle.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
