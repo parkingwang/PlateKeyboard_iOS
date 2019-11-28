@@ -8,8 +8,6 @@
 
 import UIKit
 
-import SnapKit
-
 @objc public protocol PWHandlerDelegate{
     @objc func plateDidChange(plate: String, complete: Bool)
     @objc func plateInputComplete(plate: String)
