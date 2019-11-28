@@ -8,6 +8,8 @@
 
 import UIKit
 
+import SnapKit
+
 @objc public protocol PWHandlerDelegate{
     @objc func plateDidChange(plate: String, complete: Bool)
     @objc func plateInputComplete(plate: String)
@@ -61,7 +63,7 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
     /*
      将车牌输入框绑定到 UITextField
      **/
-    @objc public func bindTextField(_ textField: UITextField, showSearch: Bool = false) -> Void {
+    @objc public func bindTextField(_ textField: UITextField, showSearch: Bool = false) {
         textField.font = UIFont.systemFont(ofSize: 13)
         
         if textField.leftView == nil && showSearch == true {
@@ -69,7 +71,7 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
                 let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
                 
                 let imgView = UIImageView(frame:CGRect(x: 0, y: 0, width: 15, height: 15));
-                imgView.image = UIImage(named:"search");
+                imgView.image = UIImage.named("search_bar");
                 imgView.contentMode = UIView.ContentMode.scaleAspectFit;
                 imgView.center = view.center;
                 view.addSubview(imgView);
@@ -96,26 +98,8 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
             inputCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - switchWidth, height: 50)
             view.addSubview(inputCollectionView)
             
-            let btn: UIButton = {
-                let view: UIButton = UIButton(type: .custom)
-                view.frame = CGRect(x: UIScreen.main.bounds.width - switchWidth, y: 0, width: switchWidth, height: 50)
-                
-//                view.setImage(UIImage(named: "PWBundle.bundle/Image/plateNumberSwitch_N"), for: .normal)
-//                view.setImage(UIImage(named: "PWBundle.bundle/Image/plateNumberSwitch_H"), for: .selected)
-                view.setImage(UIImage.named("plateNumberSwitch_N"), for: .normal)
-                view.setImage(UIImage.named("plateNumberSwitch_H"), for: .selected)
-                view.setBackgroundImage(UIImage.color(UIColor.white), for: .normal)
-
-                view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-                view.imageView?.contentMode = .scaleAspectFit
-                
-                view.layer.borderWidth = 1;
-                view.layer.borderColor = cellBorderColor.cgColor;
-                view.addTarget(self, action: #selector(handleActionBtn(_:)), for: .touchUpInside)
-                return view;
-            }()
-            
-            view.addSubview(btn)
+            switchBtn.frame = CGRect(x: UIScreen.main.bounds.width - switchWidth, y: 0, width: switchWidth, height: 50)
+            view.addSubview(switchBtn)
             return view;
         }()
         
@@ -175,7 +159,7 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
         view.dataSource = self
         return view
     }()
-    /// 属性
+    
     @objc lazy var keyboardView: PWKeyBoardView = {
         let view: PWKeyBoardView = PWKeyBoardView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         view.mainColor = mainColor
@@ -188,6 +172,8 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
      手动弹出键盘
      **/
     @objc public func vehicleKeyBoardBecomeFirstResponder(){
+//        DDLog(plateNumber, inputTextfield.text ?? "--")
+        changeInputType(isNewEnergy: switchBtn.isSelected)
         inputTextfield.becomeFirstResponder()
     }
     
@@ -195,6 +181,7 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
      手动隐藏键盘
      **/
     @objc public func vehicleKeyBoardEndEditing(){
+//        DDLog(plateNumber, inputTextfield.text ?? "--")
         UIApplication.shared.keyWindow?.endEditing(true)
     }
     
@@ -229,15 +216,15 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
     
     @objc public func setPlate(plate: String, type: PWKeyboardNumType){
         plateNumber = plate;
-        let isNewEnergy = type == .newEnergy
         var numType = type;
         selectIndex = plate.count
-        if  numType == .auto,plateNumber.count > 0,KeyboardEngine.subString(str: plateNumber, start: 0, length: 1) == "W" {
+        if  numType == .auto, plateNumber.count > 0, KeyboardEngine.subString(str: plateNumber, start: 0, length: 1) == "W" {
             numType = .wuJing
-        } else if numType == .auto,plateNumber.count == 8 {
+        } else if numType == .auto, plateNumber.count == 8 {
             numType = .newEnergy
         }
         keyboardView.numType = numType
+        let isNewEnergy = (keyboardView.numType == .newEnergy)
         isSetKeyboard = true
         changeInputType(isNewEnergy: isNewEnergy)
     }
@@ -392,6 +379,24 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
         inputCollectionView.removeObserver(self, forKeyPath: "hidden")
 
     }
+    
+    
+    lazy var switchBtn: UIButton = {
+        let view: UIButton = UIButton(type: .custom)
+//                view.setImage(UIImage(named: "plateNumberSwitch_N"), for: .normal)
+//                view.setImage(UIImage(named: "plateNumberSwitch_H"), for: .selected)
+        view.setImage(UIImage.named("plateNumberSwitch_N"), for: .normal)
+        view.setImage(UIImage.named("plateNumberSwitch_H"), for: .selected)
+        view.setBackgroundImage(UIImage(color: UIColor.white), for: .normal)
+        
+        view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        view.imageView?.contentMode = .scaleAspectFit
+        
+        view.layer.borderWidth = 1;
+        view.layer.borderColor = cellBorderColor.cgColor;
+        view.addTarget(self, action: #selector(handleActionBtn(_:)), for: .touchUpInside)
+        return view;
+    }()
     
 }
 

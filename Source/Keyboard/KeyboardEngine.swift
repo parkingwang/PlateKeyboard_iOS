@@ -108,8 +108,9 @@ class KeyboardEngine: NSObject {
                 layout = KeyboardEngine.defaultSpecial()
             }
         case 7:
-            layout = KeyboardEngine.defaultLast()
-            
+//            layout = KeyboardEngine.defaultLast()
+            layout = KeyboardEngine.defaultNumbersAndLetters()
+
         default: break
         }
         return layout
@@ -179,9 +180,10 @@ class KeyboardEngine: NSObject {
             }
             
         case 7:
-             let complete = keyString.count == 8 ? _STR_OK : ""
-            list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _STR_NUM + _CHAR_DEL + _STR_DF + complete), listModel: list, reverseModel:true)
-            
+//             let complete = keyString.count == 8 ? _STR_OK : ""
+//            list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _STR_NUM + _CHAR_DEL + _STR_DF + complete), listModel: list, reverseModel:true)
+            list = KeyboardEngine.disEnabledKey(keyString:KeyboardEngine.chStringArray(string: _CHAR_I + _CHAR_O + disOkString), listModel: list, reverseModel:false)
+
         default:
             break
         }
