@@ -1,5 +1,6 @@
 
-# 停车王车牌号码专用键盘 VehicleKeyboard - iOS
+# 停车王车牌号码专用键盘 PlateKeyboard_iOS
+（VehicleKeyboard-swift因为之前人员离职，权限问题，无法再维护）
 
 ## 概述
 
