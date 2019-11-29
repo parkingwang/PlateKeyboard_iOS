@@ -214,6 +214,9 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
     }
     
     @objc public func setPlate(plate: String, type: PWKeyboardNumType){
+        if plate == "" {
+            return;
+        }
         plateNumber = plate;
         var numType = type;
         selectIndex = plate.count
