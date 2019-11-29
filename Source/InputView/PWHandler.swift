@@ -113,7 +113,7 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
     /*
      将车牌输入框绑定到一个你自己创建的UIView(建议绑定到 UITextField)
      **/
-    @objc public func setKeyBoardView(view: UIView, showSearch: Bool = true){
+    @objc public func setupKeyBoardView(view: UIView, showSearch: Bool = true){
         self.view = view
         //        inputCollectionView.frame = view.bounds;
         

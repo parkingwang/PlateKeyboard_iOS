@@ -41,7 +41,7 @@
 //    //格子背景色
 //    self.handler.itemColor = [UIColor grayColor];
 //    [self.handler setKeyboardView:self.myTextField];
-    [self.handler setKeyBoardViewWithView:self.plateInputView showSearch:true];
+    [self.handler setupKeyBoardViewWithView:self.plateInputView showSearch:true];
 
     self.handler.delegate = self;
     

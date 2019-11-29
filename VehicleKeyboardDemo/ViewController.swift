@@ -40,7 +40,7 @@ class ViewController: UIViewController, PWHandlerDelegate {
 //        handler.itemColor = UIColor.gray
         
         
-        handler.setKeyBoardView(view: plateInputVIew)
+        handler.setupKeyBoardView(view: plateInputVIew)
         
         print("当前键盘的输入值\(self.handler.plateNumber)")//获取当前输入的值
         print(self.handler.isComplete() ? "输入完整" : "不完整")//获取当前键盘的完整性
