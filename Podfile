@@ -4,7 +4,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 #def common_pods
-    pod 'VehicleKeyboard-swift',  :path => './'
+    pod 'PlateKeyboard_iOS',  :path => './'
 #end
 
 target 'VehicleKeyboard' do
