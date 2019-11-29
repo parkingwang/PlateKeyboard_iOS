@@ -87,6 +87,7 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
             
             let view: UIView = {
                 let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+                view.backgroundColor = UIColor.white;
                 
                 view.layer.borderWidth = 1;
                 view.layer.borderColor = cellBorderColor.cgColor;
@@ -385,7 +386,6 @@ public class PWHandler: NSObject, PWKeyBoardViewDeleagte, UITextFieldDelegate {
 //                view.setImage(UIImage(named: "plateNumberSwitch_H"), for: .selected)
         view.setImage(UIImage.named("plateNumberSwitch_N"), for: .normal)
         view.setImage(UIImage.named("plateNumberSwitch_H"), for: .selected)
-        view.setBackgroundImage(UIImage(color: UIColor.white), for: .normal)
         
         view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         view.imageView?.contentMode = .scaleAspectFit

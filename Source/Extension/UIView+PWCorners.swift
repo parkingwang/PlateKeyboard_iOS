@@ -19,19 +19,19 @@ extension UIView {
 }
 
 extension UIImage {
-    // 把颜色转成UIImage
-    static func color(_ color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage{
-        let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
-        
-        let context: CGContext = UIGraphicsGetCurrentContext()!
-        context.setFillColor(color.cgColor)
-        context.fill(rect)
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsGetCurrentContext()
-        return image!
-    }
+//    // 把颜色转成UIImage
+//    static func color(_ color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage{
+//        let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+//        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+//        
+//        let context: CGContext = UIGraphicsGetCurrentContext()!
+//        context.setFillColor(color.cgColor)
+//        context.fill(rect)
+//        
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsGetCurrentContext()
+//        return image!
+//    }
 
     /// 获取 PWBundle.bundle 文件图片
     static func named(_ name: String) -> UIImage?{
