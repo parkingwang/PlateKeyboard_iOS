@@ -35,9 +35,15 @@ extension UIImage {
 
     /// 获取 PWBundle.bundle 文件图片
     static func named(_ name: String) -> UIImage?{
-        let filePath: String = "PWBundle.bundle/Image/\(name)"
-        return UIImage(named: filePath)
+        let bundle = Bundle(for: PWHandler.self)
+        let filePath = bundle.resourcePath! + "/PWBundle.bundle/Image/\(name)"
+        let image = UIImage(contentsOfFile: filePath)
+        return image;
     }
+//    static func named(_ name: String) -> UIImage?{
+//        let filePath: String = "PWBundle.bundle/Image/\(name)"
+//        return UIImage(named: filePath)
+//    }
 
     
 }
