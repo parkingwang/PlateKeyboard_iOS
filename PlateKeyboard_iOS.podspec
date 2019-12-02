@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name          = "PlateKeyboard_iOS"
-  s.version       = "0.9.32"
+  s.version       = "0.9.33"
   s.summary       = "停车王ios车牌键盘，支持原生输入框及格子样式输入框"
   s.homepage      = "https://github.com/parkingwang/PlateKeyboard_iOS"
   s.license       = { :type => 'MIT', :file => 'LICENSE' }
